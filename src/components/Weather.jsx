@@ -31,7 +31,7 @@ const Weather = () => {
                 setForecastData(forecastData);
                 setLoading(false);
             } catch (error) {
-                toast.error('Error fetching data. Please try again later.');
+                toast.error('Please Select a City');
                 setLoading(false);
             }
         };
