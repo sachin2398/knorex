@@ -18,14 +18,14 @@ const Weather = () => {
         const fetchWeatherData = async () => {
             try {
                 const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`);
-             
+                const forecastResponse = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=metric`);
 
                 if (!weatherResponse.ok || !forecastResponse.ok) {
                     throw new Error('Network response was not ok');
                 }
 
                 const weatherData = await weatherResponse.json();
-                const forecastData = await weatherResponse.json();
+                const forecastData = await forecastResponse.json();
 
                 setWeatherData(weatherData);
                 setForecastData(forecastData);
