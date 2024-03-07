@@ -56,8 +56,14 @@ const Weather = () => {
     const getNextThreeDaysForecast = () => {
         if (!forecastData) return [];
 
-        const nextThreeDaysForecast = forecastData.list.filter((item, index) => index % 8 === 0 && index < 24);
-
+        const currentDate = new Date();
+        const todayDate = currentDate.toISOString().split("T")[0];
+  
+        const nextThreeDaysForecast = forecastData.list.filter((item, index) => {
+          const itemDate = item.dt_txt.split(" ")[0];
+          return index % 8 === 0 && itemDate !== todayDate && index < 25; // Adjust the condition
+        });
+  
         return nextThreeDaysForecast;
     };
 
